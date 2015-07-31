@@ -39,7 +39,7 @@ public class Main {
 				if (i<9) ch="0"+(i+1);
 				else ch=Integer.toString(i+1);
 				x.format(
-					"\"AI."+ch+"_EU\",\""+DB+".DBD"+(0+(i*dAddr))+"\",Float,1,R/W,100,,,,,,,,,,\"\","+'\n'+
+					"\"AI."+ch+"_   EU\",\""+DB+".DBD"+(0+(i*dAddr))+"\",Float,1,R/W,100,,,,,,,,,,\"\","+'\n'+
 //					"\"AI."+ch+"_DatName\",\""+DB+",STRING"+(4+(i*dAddr))+"\",String,1,R/W,100,,,,,,,,,,\"\","+'\n'+
 					"\"AI."+ch+"_Stat\",\""+DB+".DBW"+(16+(i*dAddr))+"\",Word,1,R/W,100,,,,,,,,,,\"\","+'\n'+
 					"\"AI."+ch+"_BrPoint\",\""+DB+".DBD"+(18+(i*dAddr))+"\",Float,1,R/W,100,,,,,,,,,,\"\","+'\n'+

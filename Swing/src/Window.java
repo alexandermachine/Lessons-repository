@@ -30,7 +30,7 @@ public class Window extends JFrame {
 		
 		JPanel panel1 = new JPanel();
 		panel1.setLayout(new BoxLayout(panel1, EXIT_ON_CLOSE));
-		JButton b1 = new JButton("Кнопка1");
+		JButton b1 = new JButton("Кнопка10");
 		b1.setSize(button1.getPreferredSize());
 		getContentPane().add(b1, BorderLayout.WEST);
 		panel1.add(new JButton("Кнопка1"),BorderLayout.WEST);

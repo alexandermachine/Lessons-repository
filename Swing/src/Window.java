@@ -2,7 +2,6 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -67,6 +66,9 @@ public class Window extends JFrame {
 				JButton b1 = new JButton("кнопка1");
 				JButton b2 = new JButton("кнопка2");
 				JButton b3 = new JButton("кнопка3");
+				b1.setFocusPainted(false);
+				b2.setFocusPainted(false);
+				b3.setFocusPainted(false);
 				panel.add(b1);
 				panel.add(b2);
 				panel.add(b3);
@@ -77,7 +79,23 @@ public class Window extends JFrame {
 				JButton b4 = new JButton("кнопка4");
 				JButton b5 = new JButton("кнопка5");
 				JButton b6 = new JButton("кнопка6");
-				JButton b7 = new JButton("кнопка7");		
+				JButton b7 = new JButton("кнопка7");
+				b4.setContentAreaFilled(false);
+				b4.setFocusPainted(false);
+				b5.setContentAreaFilled(false);
+				b5.setFocusPainted(false);
+				b6.setContentAreaFilled(false);
+				b6.setFocusPainted(false);
+				b7.setContentAreaFilled(false);
+				b7.setFocusPainted(false);
+				
+				JLabel l= new JLabel("<html>К этой метке применено " 
+						+ "HTML-форматирование, включая: "
+						+ "<ul><li> <i>курсив</i>,</ul>" 
+						+ "<li><b>полужирный</b> "
+						+ "<li><font size = +2> увеличение <i>размера</i> </font>" 
+						+ "<li>маркированный список "
+						+ "<li>тролала <b>лала</b> ла");
 						
 				box.add(b4);
 				box.add(Box.createVerticalStrut(10));
@@ -87,16 +105,17 @@ public class Window extends JFrame {
 				box.add(Box.createVerticalStrut(10));
 				box.add(b7);
 				box.add(Box.createVerticalStrut(10));
-				box.setSize(100,500);
+				box.add(l);
+				box.setSize(500,500);
 				//b7.setEnabled(false);
 				
 				JPanel mainPanel = new JPanel();
 				mainPanel.setLayout(null);
-				mainPanel.add(box);
-				mainPanel.add(panel);
-				setContentPane(mainPanel);
-				//getContentPane().add(box, BorderLayout.WEST);
-				//getContentPane().add(panel, BorderLayout.CENTER);
+				//mainPanel.add(box, BorderLayout.WEST);
+				//mainPanel.add(panel, BorderLayout.CENTER);
+				//setContentPane(mainPanel);
+				getContentPane().add(box, BorderLayout.WEST);
+				getContentPane().add(panel, BorderLayout.CENTER);
 
 				//*************************************************************************//	
 				

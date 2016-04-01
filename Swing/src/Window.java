@@ -73,9 +73,12 @@ public class Window  extends JFrame implements Runnable {
 				b1.setFocusPainted(false);
 				b2.setFocusPainted(false);
 				b3.setFocusPainted(false);
+				
 				panel.add(b1);
 				panel.add(b2);
 				panel.add(b3);
+				panel.add(l3);
+				
 				//panel.setSize(100,300);
 				//panel.setLocation(300, 300);
 				
@@ -115,8 +118,7 @@ public class Window  extends JFrame implements Runnable {
 				bbb.add(r1);
 				bbb.add(r2);
 				bbb.add(r3);
-				JLabel l1= new JLabel();
-				l1.setText(Integer.toString(getHeight())+" : "+Integer.toString(getWidth()));
+				
 				JLabel l2= new JLabel(
 						"<html>К этой метке применено " 
 						+ "HTML-форматирование, включая: "
@@ -128,6 +130,7 @@ public class Window  extends JFrame implements Runnable {
 						+ "<li><b>Ну ладно ладно ОЧЕНЬ <font size = +2>ВАЖЕН</font></b>");
 				
 				box.add(l1);	
+				//box.add(l3);
 				box.add(Box.createVerticalStrut(15));
 				box.add(b4);
 				box.add(Box.createVerticalStrut(10));
@@ -163,12 +166,7 @@ public class Window  extends JFrame implements Runnable {
 				t3.setFocusPainted(false);
 				JToggleButton t4 = new JToggleButton("Тугл4");
 				t4.setFocusPainted(false);
-				
-				
-				
-				
-				
-				
+
 				botBox.add(t1);
 				botBox.add(botBox.createHorizontalGlue());
 				botBox.add(t2);
@@ -216,16 +214,34 @@ public class Window  extends JFrame implements Runnable {
 				
 				
 		setSize(550, 700);
-		t = new Thread(this,"Window repaint");
+		t = new Thread(this);
 		t.start();
 	}
 	Thread t;
 
+	JLabel l1= new JLabel();
+	JLabel l3= new JLabel();
+	int i=0;
+
 	public void run() {
 		System.out.println("Поток запущен");
-		while(true){
-			repaint();
-		}
+		
+			
+			//try {
+				while(true){
+					l1.setText(Integer.toString(getHeight())+" : "+Integer.toString(getWidth()));
+					l3.setText(Integer.toString(i));					
+					i++;
+					this.getContentPane().repaint();
+				//Thread.sleep(100);				
+				}
+			//} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+		//		e.printStackTrace();
+		//	}
+			
+		
+		
 		
 		
 	}

@@ -15,13 +15,6 @@ public class Main {
 	static Random r;
 	static boolean[] goodCol;
 
-	static Pattern pattern = Pattern.compile("\\d+");
-	static String word = "test123test444test"; // мой пример строки
-	static Matcher matcher;
-
-	static ArrayList<String> str = new ArrayList<String>();
-	// static ArrayList<String> ranks = new ArrayList<String>();
-
 	public static void main(String[] args) {
 		createInputFile();
 		fillMatrix();
@@ -46,7 +39,6 @@ public class Main {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	private static void computing() {
@@ -64,7 +56,7 @@ public class Main {
 			System.out.print(j + "th column is good . It's " + goodCol[j] + '\n');
 		}
 	}
-
+	
 	private static void fillMatrix() {
 
 		// ----------ќпределение размера матрицы----------
@@ -97,19 +89,14 @@ public class Main {
 			}
 		}
 		// ----------Ќаселение матрицы числами----------
-
 	}
 
 	private static void openFile() {
-		// String path = String.valueOf(Main.class.getResource(""));
-		// path = path.replace("bin/","res/")+"input.txt";
 		try {
 			scn = new Scanner(new File("res//input.txt"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			// System.out.println(path);
 		}
-
 	}
 
 	private static void createOutputFile() {
@@ -125,12 +112,9 @@ public class Main {
 				f.format("\n");
 			}
 			f.close();
-					
-			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 }

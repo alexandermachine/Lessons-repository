@@ -36,7 +36,7 @@ public class Main {
 		System.out.println(str);
 		String[] Str = str.split(" ");
 		for(String s:Str)
-			if(!s.isEmpty())
+			if(!s.isEmpty()&&s.length()==length)
 				System.out.print(s+"/");
 	}
 

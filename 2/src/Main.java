@@ -10,32 +10,32 @@ public class Main {
 	static Formatter f;
 	static Scanner scn;
 	static String str, w1, w2;
-	static int length, distance = 0;
+	static int length, distance = 0, nWords = 0;
 
 	static ArrayList<Word> words = new ArrayList<Word>();
 
 	public static void main(String[] args) {
 		readInputFile();
-		computing();
-		createOutputFile();
+		writeOutputFile(createOutStr());
 
 	}
 
-	private static void computing() {
-		for (int i = 0; i < words.size(); i++) {
-			for (int k = i + 1; k < words.size(); k++) {
-				int d = words.get(i).getDistance(words.get(k));
-				if (d > distance) {
-					distance = d;
-					w1 = words.get(i).getWord();
-					w2 = words.get(k).getWord();
+	private static String createOutStr() {
+		if (nWords >= 2) {
+			for (int i = 0; i < words.size(); i++) {
+				for (int k = i + 1; k < words.size(); k++) {
+					int d = words.get(i).getDistance(words.get(k));
+					if (d > distance) {
+						distance = d;
+						w1 = words.get(i).getWord();
+						w2 = words.get(k).getWord();
+					}
 				}
 			}
-		}
-		System.out.println(distance);
-		System.out.println(w1);
-		System.out.println(w2);
-
+			return w1 + " " + w2;
+			
+		} else
+			return "НЕТ";
 	}
 
 	private static void readInputFile() {
@@ -46,30 +46,20 @@ public class Main {
 		}
 		str = scn.nextLine();
 		length = scn.nextInt();
-		System.out.println(str);
 		String[] Str = str.split(" ");
 		for (String s : Str)
 			if (!s.isEmpty() && s.length() == length) {
 				words.add(new Word(s));
-				System.out.print(s + "|");
+				nWords++;
 			}
 	}
 
-	private static void createOutputFile() {
-		System.out.println("формирование выходного файла");
+	private static void writeOutputFile(String str) {
 		try {
 			f = new Formatter("res//output.txt");
-			if (distance > 0){
-				System.out.println("расстояние больше нуля");
-				f.format(w1 + " " + w2);
-			}
-			else{
-				System.out.println("расстояние равно нуля");
-				f.format("НЕТ");
-			}				
+			f.format(str);
 			f.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("файл не создан");
 			e.printStackTrace();
 		}
 	}

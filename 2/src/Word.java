@@ -1,29 +1,10 @@
 import java.util.ArrayList;
 
 public class Word {
-	private String word;
 	private ArrayList<String> W = new ArrayList<String>();
 
-	public Word(String word) {
-		this.word = word;
-	}
 
-	public Word() {
-		word = null;
-	}
 
-	public int getDistance(Word w) {
-		int distance = 0;
-		for (int i = 0; i < this.word.length(); i++) {
-			if (word.charAt(i) != w.getWord().charAt(i))
-				distance++;
-		}
-		return distance;
-	}
-
-	public String getWord() {
-		return word;
-	}
 
 	public void addW(String w) {
 		W.add(w);

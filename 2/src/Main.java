@@ -9,33 +9,36 @@ import java.util.regex.Pattern;
 public class Main {
 	static Formatter f;
 	static Scanner scn;
-	static String str, w1, w2;
-	static int length, distance = 0, nWords = 0;
-
 	static ArrayList<Word> words = new ArrayList<Word>();
+	static Word w = new Word();
 
 	public static void main(String[] args) {
 		readInputFile();
-		writeOutputFile(createOutStr());
-
+		writeOutputFile(w.getResult());
+		
+		
+		
+		System.out.println();
+		w.printW();
 	}
 
 	private static String createOutStr() {
-		if (nWords >= 2) {
-			for (int i = 0; i < words.size(); i++) {
-				for (int k = i + 1; k < words.size(); k++) {
-					int d = words.get(i).getDistance(words.get(k));
-					if (d > distance) {
-						distance = d;
-						w1 = words.get(i).getWord();
-						w2 = words.get(k).getWord();
-					}
+		int distance = 0;
+		Word w1, w2;
+		if (words.size() < 2)
+			return "мер";
+		for (int i = 0; i < words.size(); i++) {
+			w1 = words.get(i);
+			for (int k = i + 1; k < words.size(); k++) {
+				w2 = words.get(k);
+				int d = w1.getDistance(w2);
+				if (d > distance) {
+					distance = d;
 				}
 			}
-			return w1 + " " + w2;
-			
-		} else
-			return "мер";
+		}
+
+		return "";// w1.getWord() + " " + w2.getWord();
 	}
 
 	private static void readInputFile() {
@@ -44,20 +47,20 @@ public class Main {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		str = scn.nextLine();
-		length = scn.nextInt();
-		String[] Str = str.split(" ");
-		for (String s : Str)
-			if (!s.isEmpty() && s.length() == length) {
+		String inputStr = scn.nextLine();
+		int lengthWord = scn.nextInt();
+		for (String s : inputStr.split(" ")) 			
+			if (!s.isEmpty() && s.length() == lengthWord) {
 				words.add(new Word(s));
-				nWords++;
+				System.out.print(s + " | ");
+				w.addW(s);
 			}
 	}
 
-	private static void writeOutputFile(String str) {
+	private static void writeOutputFile(String outStr) {
 		try {
 			f = new Formatter("res//output.txt");
-			f.format(str);
+			f.format(outStr);
 			f.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

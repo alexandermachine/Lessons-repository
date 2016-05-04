@@ -1,3 +1,6 @@
+//Eclipse IDE for Java Developers	Version: Mars.2 Release (4.5.2)	Build id: 20160218-0600
+
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -15,9 +18,6 @@ public class Main {
 	public static void main(String[] args) {
 		readInputFile();
 		writeOutputFile(w.getResult());
-		
-		System.out.println();
-		w.printW();
 	}
 
 
@@ -32,7 +32,6 @@ public class Main {
 		int lengthWord = scn.nextInt();
 		for (String s : inputStr.split(" ")) 			
 			if (!s.isEmpty() && s.length() == lengthWord) {
-				System.out.print(s + " | ");
 				w.addW(s);
 			}
 	}

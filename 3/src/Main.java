@@ -1,3 +1,6 @@
+//Eclipse IDE for Java Developers	Version: Mars.2 Release (4.5.2)	Build id: 20160218-0600
+
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -56,16 +59,6 @@ public class Main {
 				}
 			}
 			prewX = f;
-		}
-		for (Function f : func) {
-			System.out.print(" " + f.getX() + " ");
-		}
-		System.out.println();
-		for (Function f : func) {
-			if (f.isExtremum())
-				System.out.print(" " + "^" + " ");
-			else
-				System.out.print(" " + "." + " ");
 		}
 	}
 

@@ -27,12 +27,12 @@ public class Main {
 			scn = new Scanner(new File("res//input.txt"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
-		String inputStr = scn.nextLine();
-		int lengthWord = scn.nextInt();
-		for (String s : inputStr.split(" ")) 			
-			if (!s.isEmpty() && s.length() == lengthWord) {
-				w.addW(s);
+		}													//Из файла input.txt берем и 
+		String inputStr = scn.nextLine();					//сохраняем строку с предложением, а так же
+		int lengthWord = scn.nextInt();						//числовую переменную, которая определяет длину интерисующих слов.
+		for (String s : inputStr.split(" ")) 				//Разбив строку по словам,
+			if (s.length() == lengthWord) {					//ищем среди них слова нужной длины и
+				w.add(s);									//добавляем их в лист.
 			}
 	}
 

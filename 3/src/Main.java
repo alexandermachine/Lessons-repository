@@ -15,12 +15,12 @@ public class Main {
 	public static void main(String[] args) {
 		readInputFile();
 		findExtremum();
-		createOutputFile(longestInterval());
+		createOutputFile(getResult());
 	}
 
-	private static String longestInterval() {
-		int bigestInterval = 0, interval = 0;
-		int iStart = 0;
+	private static String getResult() {
+		int bigestInterval = 0, interval = 0;		//наибольший интервал монотонности, текущий интервал монотонности
+		int iStart = 0;								//индекс начала наибольшего интервала
 		String result = " ";
 		for (int i = 0; i < func.size(); i++) {
 			interval++;
@@ -39,19 +39,24 @@ public class Main {
 	}
 
 	private static void findExtremum() {
-		func.get(0).setExtremum(true);
-		Function prewX = func.get(0);
-		boolean incFunc = false;
+		
+		func.get(0).setExtremum(true);				//первую точку помечаем как экстремум
+		func.get((func.size()-1)).setExtremum(true);//последнюю точку помечаем как экстремум
+		Function prewX = func.get(0); 				//предыдущее значение
+		boolean incFunc = false;					//переменная которая показывает направление функции (true - возрастащая, false - убывающая),
+													//по умолчанию ставим ее как убывающую
+		
+		// ----------находим точки экстреума----------
 		for (Function f : func) {
-			if (incFunc) {
-				if (f.getX() >= prewX.getX())
-					prewX.setExtremum(false);
-				else {
-					prewX.setExtremum(true);
-					incFunc = false;
+			if (incFunc) {						//возрастающая функция:
+				if (f.getX() >= prewX.getX())	//если текущее значение больше либо равно предыдущего, 
+					prewX.setExtremum(false);	//значит функция возрастающая,
+				else {							//если это не так,
+					prewX.setExtremum(true);	//то помечаем эту точку какэкстремум
+					incFunc = false;			//и помечаем что функция теперь убываэщая
 				}
-			} else {
-				if (f.getX() <= prewX.getX())
+			} else {							//убываэщая функция:
+				if (f.getX() <= prewX.getX())	//то же самое только наоборот
 					prewX.setExtremum(false);
 				else {
 					prewX.setExtremum(true);
@@ -60,6 +65,7 @@ public class Main {
 			}
 			prewX = f;
 		}
+		// ----------находим точки экстреума----------
 	}
 
 	private static void createOutputFile(String outStr) {
